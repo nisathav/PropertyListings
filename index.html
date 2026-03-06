@@ -275,7 +275,7 @@ html, body {
   gap: 9px; align-items: flex-end;
 }
 .ppill {
-  padding: 10px 24px; font-size: 18px;
+  padding: 14px 32px; font-size: 26px;
   letter-spacing: 2px; font-weight: 700;
   text-transform: uppercase; border-radius: 2px; white-space: nowrap;
 }
@@ -361,16 +361,22 @@ html, body {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 64px; color: var(--warm-white);
   letter-spacing: 5px; line-height: 1;
+  animation: numberGlow 2s ease-in-out infinite;
+  display: inline-block;
+}
+@keyframes numberGlow {
+  0%,100% { color: var(--warm-white); text-shadow: none; transform: scale(1); }
+  50% { color: var(--amber-light); text-shadow: 0 0 30px rgba(232,160,32,0.8), 0 0 60px rgba(232,160,32,0.4); transform: scale(1.03); }
 }
 
 .addr-line1 {
   font-family: 'Cormorant', serif;
-  font-size: 38px; font-weight: 600;
+  font-size: 50px; font-weight: 600;
   color: var(--warm-white); margin-bottom: 4px; line-height: 1.1;
   position: relative; z-index: 1;
 }
 .addr-line2 {
-  font-size: 22px; color: rgba(255,255,255,0.45); font-weight: 300;
+  font-size: 40px; color: rgba(255,255,255,0.45); font-weight: 300;
   position: relative; z-index: 1;
 }
 
