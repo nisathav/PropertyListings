@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=1080">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Property Listing — Digital Signage</title> 
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito+Sans:wght@300;400;600;700;900&family=Cormorant:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
 <style>
@@ -25,12 +25,19 @@
   --text-soft:    #8C7D6A;
 }
 
-html, body {
+html {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #1C2130;
+}
+body {
   width: 1080px;
   height: 1920px;
   overflow: hidden;
   background: var(--cream);
   font-family: 'Nunito Sans', sans-serif;
+  transform-origin: top left;
 }
 
 .stage {
@@ -371,12 +378,12 @@ html, body {
 
 .addr-line1 {
   font-family: 'Cormorant', serif;
-  font-size: 50px; font-weight: 600;
+  font-size: 38px; font-weight: 600;
   color: var(--warm-white); margin-bottom: 4px; line-height: 1.1;
   position: relative; z-index: 1;
 }
 .addr-line2 {
-  font-size: 40px; color: rgba(255,255,255,0.45); font-weight: 300;
+  font-size: 22px; color: rgba(255,255,255,0.45); font-weight: 300;
   position: relative; z-index: 1;
 }
 
@@ -458,7 +465,6 @@ html, body {
         <div class="prop-name">Commercial Building</div>
       </div>
       <div class="prop-pills">
-        <div class="ppill dark">24ft x 30ft - Hall</div>
         <div class="ppill dark">1 Bathroom</div>
         <div class="ppill light">720 sqft</div>
       </div>
@@ -518,6 +524,23 @@ html, body {
     slides[cur].classList.add('active');
     dots[cur].classList.add('active');
   }, 5000);
+</script>
+
+<script>
+function scaleToScreen() {
+  const DESIGN_W = 1080;
+  const DESIGN_H = 1920;
+  const scaleX = window.innerWidth  / DESIGN_W;
+  const scaleY = window.innerHeight / DESIGN_H;
+  const scale  = Math.min(scaleX, scaleY);
+  document.body.style.transform = `scale(${scale})`;
+  const offsetX = (window.innerWidth  - DESIGN_W * scale) / 2;
+  const offsetY = (window.innerHeight - DESIGN_H * scale) / 2;
+  document.body.style.marginLeft = offsetX + 'px';
+  document.body.style.marginTop  = offsetY + 'px';
+}
+window.addEventListener('resize', scaleToScreen);
+scaleToScreen();
 </script>
 </body>
 </html>
