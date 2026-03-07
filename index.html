@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=1080">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Property Listing — Digital Signage</title> 
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito+Sans:wght@300;400;600;700;900&family=Cormorant:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
 <style>
@@ -25,12 +25,19 @@
   --text-soft:    #8C7D6A;
 }
 
-html, body {
+html {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+body {
   width: 1080px;
   height: 1920px;
   overflow: hidden;
   background: var(--cream);
   font-family: 'Nunito Sans', sans-serif;
+  transform-origin: top left;
 }
 
 .stage {
@@ -518,6 +525,22 @@ html, body {
     slides[cur].classList.add('active');
     dots[cur].classList.add('active');
   }, 5000);
+
+  function scaleToScreen() {
+    const DESIGN_W = 1080;
+    const DESIGN_H = 1920;
+    const scaleX = window.innerWidth  / DESIGN_W;
+    const scaleY = window.innerHeight / DESIGN_H;
+    const scale  = Math.min(scaleX, scaleY);
+    document.body.style.transform = `scale(${scale})`;
+    const offsetX = (window.innerWidth  - DESIGN_W * scale) / 2;
+    const offsetY = (window.innerHeight - DESIGN_H * scale) / 2;
+    document.body.style.marginLeft = offsetX + 'px';
+    document.body.style.marginTop  = offsetY + 'px';
+  }
+
+  scaleToScreen();
+  window.addEventListener('resize', scaleToScreen);
 </script>
 </body>
 </html>
